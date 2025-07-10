@@ -1,0 +1,95 @@
+[
+  {
+    "id": 5133945397,
+    "domain": "live",
+    "status": "success",
+    "reference": "T950893789110728",
+    "receipt_number": null,
+    "amount": 50000,
+    "message": null,
+    "gateway_response": "Approved",
+    "paid_at": "2025-07-10T09:57:06.000Z",
+    "created_at": "2025-07-10T09:55:49.000Z",
+    "channel": "bank_transfer",
+    "currency": "NGN",
+    "ip_address": "102.88.109.215",
+    "metadata": {
+      "referrer": "http://localhost:3000/"
+    },
+    "log": {
+      "start_time": 1752141348,
+      "time_spent": 77,
+      "attempts": 0,
+      "errors": 0,
+      "success": true,
+      "mobile": false,
+      "input": [],
+      "history": [
+        {
+          "type": "action",
+          "message": "Set payment method to: bank_transfer",
+          "time": 28
+        },
+        {
+          "type": "success",
+          "message": "Successfully paid with bank_transfer",
+          "time": 77
+        }
+      ]
+    },
+    "fees": 750,
+    "fees_split": null,
+    "authorization": {
+      "authorization_code": "AUTH_pkxgb6vlwm",
+      "bin": "210XXX",
+      "last4": "X879",
+      "exp_month": "07",
+      "exp_year": "2025",
+      "channel": "bank_transfer",
+      "card_type": "transfer",
+      "bank": "United Bank For Africa",
+      "country_code": "NG",
+      "brand": "Managed Account",
+      "reusable": false,
+      "signature": null,
+      "account_name": null,
+      "sender_bank": "United Bank For Africa",
+      "sender_country": "NG",
+      "sender_bank_account_number": "XXXXXXX879",
+      "sender_name": "OLUBUKOLA ESTHER OLUTOLA",
+      "narration": "MOB/UTO/PAYSTACK CHECK/Mnightynine/31704656115",
+      "receiver_bank_account_number": null,
+      "receiver_bank": null
+    },
+    "customer": {
+      "id": 291155640,
+      "first_name": "",
+      "last_name": "",
+      "email": "olubukolaolutola@gmail.com",
+      "customer_code": "CUS_ht84j5d5nytcmah",
+      "phone": "",
+      "metadata": null,
+      "risk_action": "default",
+      "international_format_phone": null
+    },
+    "plan": null,
+    "split": {},
+    "order_id": null,
+    "paidAt": "2025-07-10T09:57:06.000Z",
+    "createdAt": "2025-07-10T09:55:49.000Z",
+    "requested_amount": 50000,
+    "pos_transaction_data": null,
+    "source": null,
+    "fees_breakdown": [
+      {
+        "amount": 750,
+        "formula": null,
+        "type": "paystack"
+      }
+    ],
+    "connect": null,
+    "transaction_date": "2025-07-10T09:55:49.000Z",
+    "plan_object": {},
+    "subaccount": {}
+  }
+]
