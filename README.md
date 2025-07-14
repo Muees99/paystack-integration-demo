@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💳 Paystack Integration Demo – Next.js App
 
-## Getting Started
+A modern full-stack payment integration demo using **Next.js**, **TypeScript**, and **Paystack API**. This project simulates a seamless checkout flow with payment verification, transaction history tracking, and a dynamic UI for success and error states.
 
-First, run the development server:
+Payment platform that implements at least 2 Paystack APIs for Assessment Purposes
 
-```bash
+## 📸 Demo
+
+🔗 Live Demo: [https://paystack-integration-demo.vercel.app/](https://paystack-integration-demo.vercel.app/)
+
+---
+
+## 🚀 Features
+
+- ✅ Initiate payments via Paystack inline modal
+- 🔁 Payment verification via server-side API route
+- 🧾 View all transactions (including successful, cancelled, and abandoned)
+- 📦 Backend powered by API routes with secure Paystack secret key
+- 📊 Transaction dashboard table for managing all payment records
+- 🧠 Toast notifications for feedback
+- 📱 Responsive and mobile-friendly design
+
+---
+
+## 🛠 Tech Stack
+
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Paystack API](https://paystack.com/docs/api/)
+- [Vercel](https://vercel.com/) (for deployment)
+
+---
+
+## 📁 Folder Structure
+├── app/
+│   ├── components/        # Reusable UI components
+│   ├── layout/            # Layouts used across pages
+│   ├── api/               # API routes (e.g., verify, transactions)
+│   ├── success/           # Transaction success logic
+│   └── transactions/      # Dashboard display of transactions
+├── public/                # Static assets like images
+├── .env.local             # Local environment config
+├── README.md              # Project documentation
+
+
+
+| Route                 | Method | Description                           |
+| --------------------- | ------ | ------------------------------------- |
+| `/api/transactions`   | GET    | Fetches list of Paystack transactions |
+| `/api/verify?ref=xxx` | GET    | Verifies a specific transaction       |
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file in the root with the following:
+
+```env
+PAYSTACK_SECRET_KEY=your_paystack_secret_key
+NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=your_paystack_public_key
+
+
+## 🚧 Limitations
+
+- **Transaction Status Handling**  
+  While the app fetches and displays all transactions from Paystack—including `success`, `abandoned`, and `cancelled`—there is currently no additional logic for handling failed or incomplete transactions. Features like retries, alerts, or automated refunds are not implemented.
+
+- **Static Environment Configs**  
+  API keys and environment variables are set at build time. For security and flexibility, it's recommended to use runtime secrets management in production.
+
+- **Minimal Error UI Feedback**  
+  Error states (e.g., payment failures, API timeouts) are shown in basic toast or inline messages. There’s room to improve the UX with detailed modals or retry flows.
+
+- **No Backend Persistence**  
+  All transaction data is fetched in real-time from Paystack’s API. There’s no database layer or historical archiving within the app itself.
+
+
+## 🤝 Contributing
+
+Pull requests are welcome! If you’d like to contribute:
+
+- Fork the repository.
+- Create a new branch for your feature or fix.
+- Commit your changes with clear messages.
+- Open a pull request.
+
+For major changes, please open an issue first to discuss what you'd like to change.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+Feel free to use, modify, and distribute it as permitted under the license terms.
+
+
+# Clone the repository
+git clone https://github.com/Muees99/paystack-integration-demo.git
+
+# Navigate into the project directory
+cd paystack-integration-demo
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
