@@ -46,12 +46,6 @@ const CheckoutForm = () => {
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
-      {/* <button
-        onClick={handlePayment}
-        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-      >
-        Pay Now
-      </button> */}
       <button
         onClick={handlePayment}
         className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50"
