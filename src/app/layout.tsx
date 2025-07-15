@@ -14,6 +14,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
 
 export const metadata: Metadata = {
   title: "Paystack-integration-demo",
@@ -26,58 +28,30 @@ export interface LayoutProps {
   types: React.ReactNode;
 }
 
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-  // export default function RootLayout({
-  //   children,
-  // }: Readonly<{
-  //   children: React.ReactNode;
-  // }>) {
-  //   return (
-  //     <html lang="en">
-  //       <head>
-  //         {/* ✅ Paystack SDK Script */}
-  //         <Script
-  //           // type="text/javascript"
-  //           // src="https://js.paystack.co/v1/inline.js"
-  //           // async
-  //           src="https://js.paystack.co/v1/inline.js"
-  //           strategy="beforeInteractive"
-  //         />
-  //       </head>
-  //       <body
-  //         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-  //       >
-  //         <Navbar />
-  //         {children}
-  //       </body>
-  //     </html>
-  // export default function RootLayout({
-  //   children,
-  // }: {
-  //   children: React.ReactNode;
-  // }) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    export default function RootLayout({ children, types }: LayoutProps) {
-      return (
-        <html lang="en">
-          <head>
-            <Script
-              src="https://js.paystack.co/v1/inline.js"
-              strategy="beforeInteractive"
-            />
-          </head>
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
-            <Toaster position="top-center" reverseOrder={false} />
-            <Navbar />
-            {children}
-          </body>
-        </html>
-      );
-    }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function RootLayout({ children, types }: LayoutProps) {
+  return (
+    <html lang="en">
+      <head>
+        <Script
+          src="https://js.paystack.co/v1/inline.js"
+          strategy="beforeInteractive"
+        />
+      </head>
+    
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+      >
+        <Toaster position="top-center" reverseOrder={false} />
+        <Navbar />
+        <main className="flex-grow container mx-auto px-4 py-6">
+          {children}
+        </main>
+        <footer className="bg-[#007BFF] text-white text-center text-sm py-6">
+          &copy; {currentYear} PayDemo by Muees99. | All rights
+          reserved.
+        </footer>
+      </body>
+    </html>
+  );
+}
