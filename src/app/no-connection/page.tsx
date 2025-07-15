@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, Suspense } from "react";
-// import WebLayout from "@/../layout/webLayout";
 import Image from "next/image";
 import Noconnect from "../../../public/assets/no-connection.png";
 
