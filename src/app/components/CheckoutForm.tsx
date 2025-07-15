@@ -1,23 +1,20 @@
 "use client";
 
 import { useState } from "react";
-// import Image from "next/image";
-// import Paystack from"../../../public/assets/Paystack.png"
-// import toast from "react-hot-toast";
 import toast from "react-hot-toast";
 
 const CheckoutForm = () => {
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("");
   // const [statusMessage, setStatusMessage] = useState("");
-  const [paymentStarted, setPaymentStarted] = useState(false);
+  // const [paymentStarted, setPaymentStarted] = useState(false);
 
   const handlePayment = () => {
     // if (!email || !amount || Number(amount) <= 0) {
     //   alert("Please enter a valid email and amount.");
     //   return;
     // }
-    setPaymentStarted(true); // 👈 mark that payment started
+    // setPaymentStarted(true); // 👈 mark that payment started
     setTimeout(() => {
       const paystack = window.PaystackPop.setup({
         key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
@@ -25,7 +22,7 @@ const CheckoutForm = () => {
         amount: Number(amount) * 100, // Convert Naira to Kobo
         currency: "NGN",
         callback: function (response: { reference: string }) {
-          setPaymentStarted(false); // 👈 reset
+          // setPaymentStarted(false); // 👈 reset
           toast.success("Payment successful! Redirecting...");
           window.location.href = `/success?ref=${response.reference}`;
         },
@@ -33,16 +30,12 @@ const CheckoutForm = () => {
         //   setStatusMessage("Payment was cancelled. You can try again anytime.");
         // },
         
-        // onClose: function () {
-        //   if (paymentStarted) {
-        //     toast.error("Payment abandoned or cancelled.");
-        //   }
-        // },
         onClose: function () {
-          if (paymentStarted) {
-            toast.error("Payment was abandoned or cancelled.");
-            setPaymentStarted(false); // Reset state after closing
-          }
+          // if (paymentStarted) {
+          //   toast.error("Payment was abandoned or cancelled.");
+          //   setPaymentStarted(false); // Reset state after closing
+          // }
+          toast.error("Payment was abandoned or cancelled.");
         },
       });
       paystack.openIframe();
