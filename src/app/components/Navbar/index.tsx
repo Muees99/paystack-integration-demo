@@ -20,9 +20,7 @@ const Navbar = () => {
       : "text-gray-700 hover:text-blue-600";
 
   return (
-    // <nav className="bg-white shadow-md fixed top-0 w-full z-50">
     <nav className="fixed top-0 w-full z-30 bg-white shadow">
-
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-blue-600">
