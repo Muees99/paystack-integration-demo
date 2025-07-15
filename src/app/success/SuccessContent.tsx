@@ -57,7 +57,6 @@ export default function SuccessContent() {
 
       {/* ✅ Toast Notification */}
       {showToast && (
-        // <div className="fixed top-5 right-5 bg-green-600 text-white px-4 py-2 rounded shadow-lg flex items-center gap-2 animate-fade-in-out">
         <div className="fixed top-20 right-5 z-40 bg-green-600 text-white px-4 py-2 rounded shadow-lg flex items-center gap-2 animate-fade-in-out">
           <Image
             src={PayStackLogo}
