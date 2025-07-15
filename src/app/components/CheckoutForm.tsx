@@ -7,8 +7,18 @@ const CheckoutForm = () => {
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("");
   // const [statusMessage, setStatusMessage] = useState("");
-  // const [paymentStarted, setPaymentStarted] = useState(false);
+  const [paymentStarted, setPaymentStarted] = useState(false);
 
+  type PaystackSetupOptions = {
+    key: string | undefined;
+    email: string;
+    amount: number;
+    currency: string;
+    reference: string;
+    callback: (response: { reference: string }) => void;
+    onClose: () => void;
+  };
+  
   const handlePayment = () => {
     // if (!email || !amount || Number(amount) <= 0) {
     //   alert("Please enter a valid email and amount.");
@@ -16,26 +26,32 @@ const CheckoutForm = () => {
     // }
     // setPaymentStarted(true); // 👈 mark that payment started
     setTimeout(() => {
-      const paystack = window.PaystackPop.setup({
+      type PaystackPopType = {
+        setup: (options: PaystackSetupOptions) => { openIframe: () => void };
+      };
+
+      const paystackPop = (window as { PaystackPop: PaystackPopType }).PaystackPop;
+      const paystack = paystackPop.setup({
         key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
         email,
         amount: Number(amount) * 100, // Convert Naira to Kobo
         currency: "NGN",
+        reference: new Date().getTime().toString(),
         callback: function (response: { reference: string }) {
-          // setPaymentStarted(false); // 👈 reset
+          setPaymentStarted(false); // 👈 reset
           toast.success("Payment successful! Redirecting...");
           window.location.href = `/success?ref=${response.reference}`;
         },
         // onClose: function () {
         //   setStatusMessage("Payment was cancelled. You can try again anytime.");
         // },
-        
+  
         onClose: function () {
-          // if (paymentStarted) {
-          //   toast.error("Payment was abandoned or cancelled.");
-          //   setPaymentStarted(false); // Reset state after closing
-          // }
-          toast.error("Payment was abandoned or cancelled.");
+          if (paymentStarted) {
+            toast.error("Payment was abandoned or cancelled.");
+            setPaymentStarted(false); // Reset state after closing
+          }
+          // toast.error("Payment was abandoned or cancelled.");
         },
       });
       paystack.openIframe();
