@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { PaystackSetupOptions } from "../@types";
 
 const CheckoutForm = () => {
   const [email, setEmail] = useState("");
@@ -9,22 +10,14 @@ const CheckoutForm = () => {
   // const [statusMessage, setStatusMessage] = useState("");
   const [paymentStarted, setPaymentStarted] = useState(false);
 
-  type PaystackSetupOptions = {
-    key: string | undefined;
-    email: string;
-    amount: number;
-    currency: string;
-    reference: string;
-    callback: (response: { reference: string }) => void;
-    onClose: () => void;
-  };
+  
   
   const handlePayment = () => {
     // if (!email || !amount || Number(amount) <= 0) {
     //   alert("Please enter a valid email and amount.");
     //   return;
     // }
-    // setPaymentStarted(true); // 👈 mark that payment started
+    setPaymentStarted(true); // 👈 mark that payment started
     setTimeout(() => {
       type PaystackPopType = {
         setup: (options: PaystackSetupOptions) => { openIframe: () => void };

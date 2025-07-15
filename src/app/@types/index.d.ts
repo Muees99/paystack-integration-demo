@@ -34,11 +34,21 @@ type Transaction = {
   paid_at: string;
 };
 
-interface TransactionData {
-  customer: { email: string };
+// interface TransactionData {
+//   customer: { email: string };
+//   amount: number;
+//   reference: string;
+//   status: string;
+//   paid_at: string;
+//   [key: string]: unknown;
+// }
+
+type PaystackSetupOptions = {
+  key: string | undefined;
+  email: string;
   amount: number;
+  currency: string;
   reference: string;
-  status: string;
-  paid_at: string;
-  [key: string]: unknown;
-}
+  callback: (response: { reference: string }) => void;
+  onClose: () => void;
+};
